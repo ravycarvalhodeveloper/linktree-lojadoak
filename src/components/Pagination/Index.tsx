@@ -1,4 +1,5 @@
 import { motion } from "framer-motion"
+import { Fade } from "react-awesome-reveal"
 
 import image11 from '../../images/01.jpeg'
 import image10 from '../../images/02.jpeg'
@@ -31,23 +32,25 @@ export default function Pagination() {
     return (
         <div className="w-full px-14 lg:max-w-5xl flexitems-center justify-center my-10">
 
-            <motion.div className="cursor-grab overflow-hidden rounded " whileTap={{ cursor: "grabbing"}}  >
-                <motion.div 
-                    ref={carrossel} 
-                        className="flex " 
-                            drag="x" 
-                                dragConstraints={{ right:0, left: -width}}>
+            <Fade triggerOnce={true} direction="left" cascade damping={2.0}>
+                <motion.div className="cursor-grab overflow-hidden rounded " whileTap={{ cursor: "grabbing"}}  >
+                    <motion.div 
+                        ref={carrossel} 
+                            className="flex " 
+                                drag="x" 
+                                    dragConstraints={{ right:0, left: -width}}>
 
-                   {images.map( (item) => (
-                         <motion.div className="min-h-60 min-w-72 p-2 rounded" >
-                            <img 
-                                className="w-full h-[100%] rounded pointer-events-none shadow-md" 
-                                key={item} src={item} alt="TextoAlt" />
-                        </motion.div>
-                   ))}     
-                
+                    {images.map( (item) => (
+                            <motion.div className="min-h-60 min-w-72 p-2 rounded" >
+                                <img 
+                                    className="w-full h-[100%] rounded pointer-events-none shadow-md" 
+                                    key={item} src={item} alt="TextoAlt" />
+                            </motion.div>
+                    ))}     
+                    
+                    </motion.div>
                 </motion.div>
-            </motion.div>
+            </Fade>
         </div>
     )
 }
